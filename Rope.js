@@ -3,25 +3,27 @@ class Rope{
         var options={
             bodyA:bodyA,
             pointB:pointB,
-            stiffness:0.04,
+            stiffness:0.004,
             length:10
         }
         
         this.pointB=pointB
-        this.body=Constraint.create(options)
-        World.add(world,this.body)
+        this.rope=Constraint.create(options)
+        World.add(world,this.rope)
     }
     attach(){
-        this.body.bodyA=body;
+        this.rope.bodyA=body;
     }
     fly(){
-        this.body.bodyA=null;
+        this.rope.bodyA=null;
     }
 
     display(){
-        var pointA = this.sling.bodyA.position;
+        if(this.rope.bodyA){
+        var pointA = this.rope.bodyA.position;
             var pointB = this.pointB;
         line(pointA.x,pointA.y,pointB.x,pointB.y)
+        }
     }
 
 
